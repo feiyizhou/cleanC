@@ -1,0 +1,39 @@
+version: '3'
+
+info:
+  companyName: "CleanC"
+  productName: "CleanC"
+  productIdentifier: "com.cleanc.app"
+  description: "Windows 系统工具"
+  copyright: "(c) 2025, CleanC"
+  comments: "系统清理与管理工具"
+  version: "0.0.1"
+
+dev_mode:
+  root_path: .
+  log_level: warn
+  debounce: 1000
+  ignore:
+    dir:
+      - .git
+      - node_modules
+      - frontend
+      - bin
+    file:
+      - .DS_Store
+      - .gitignore
+      - .gitkeep
+    watched_extension:
+      - "*.go"
+    git_ignore: true
+  executes:
+    - cmd: npm --prefix frontend install
+      type: once
+    - cmd: npm --prefix frontend run dev
+      type: background
+    - cmd: go mod tidy
+      type: blocking
+    - cmd: go build -o build/bin/cleanc .
+      type: blocking
+    - cmd: ./build/bin/cleanc
+      type: primary
