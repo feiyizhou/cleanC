@@ -1,23 +1,14 @@
-# Go
-*.exe
-*.exe~
-*.dll
-*.so
-*.dylib
+# Ignore build artifacts and dependencies
+.task
 
-# Build output
-build/bin/
+# Ignore Taskfile artifacts
+bin
 
-# Frontend
-frontend/node_modules/
-frontend/dist/
+# Ignore frontend build artifacts and dependencies
+frontend/dist
+frontend/node_modules
 
-# IDE
-.idea/
-.vscode/
-*.swp
-*.swo
-
-# OS
-.DS_Store
-Thumbs.db
+# Ignore build output directories and files
+build/bin
+build/linux/appimage/build
+build/windows/nsis/MicrosoftEdgeWebview2Setup.exe

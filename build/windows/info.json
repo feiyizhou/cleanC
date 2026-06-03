@@ -1,0 +1,15 @@
+{
+	"fixed": {
+		"file_version": "0.0.1"
+	},
+	"info": {
+		"0000": {
+			"ProductVersion": "0.0.1",
+			"CompanyName": "CleanC",
+			"FileDescription": "Windows 系统工具",
+			"LegalCopyright": "(c) 2025, CleanC",
+			"ProductName": "CleanC",
+			"Comments": "系统清理与管理工具"
+		}
+	}
+}

@@ -1,28 +1,29 @@
 <script setup lang="ts">
-import { ref, onMounted } from 'vue'
+import { ref, onMounted } from "vue";
 
 interface SystemInfo {
-  hostname: string
-  os: string
-  arch: string
-  numCPU: number
+  hostname: string;
+  os: string;
+  arch: string;
+  numCPU: number;
 }
 
-const systemInfo = ref<SystemInfo | null>(null)
-const loading = ref(true)
+const systemInfo = ref<SystemInfo | null>(null);
+const loading = ref(true);
 
 onMounted(async () => {
   try {
     // 通过 Wails v3 生成的绑定调用后端 Service 方法
     // 绑定文件由 `wails3 generate bindings` 自动生成
-    const { GetSystemInfo } = await import('../../bindings/cleanC/services/system/systemservice.js')
-    systemInfo.value = await GetSystemInfo()
+    const { GetSystemInfo } =
+      await import("../../bindings/cleanC/internal/service/systemservice");
+    systemInfo.value = await GetSystemInfo();
   } catch (e) {
-    console.error('获取系统信息失败:', e)
+    console.error("获取系统信息失败:", e);
   } finally {
-    loading.value = false
+    loading.value = false;
   }
-})
+});
 </script>
 
 <template>

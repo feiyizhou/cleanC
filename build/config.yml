@@ -23,17 +23,16 @@ dev_mode:
       - .DS_Store
       - .gitignore
       - .gitkeep
+      - "*_test.go"
     watched_extension:
       - "*.go"
+      - "*.js"
+      - "*.ts"
     git_ignore: true
   executes:
-    - cmd: npm --prefix frontend install
-      type: once
-    - cmd: npm --prefix frontend run dev
+    - cmd: wails3 build DEV=true
+      type: blocking
+    - cmd: wails3 task common:dev:frontend
       type: background
-    - cmd: go mod tidy
-      type: blocking
-    - cmd: go build -o build/bin/cleanc .
-      type: blocking
-    - cmd: ./build/bin/cleanc
+    - cmd: wails3 task run
       type: primary

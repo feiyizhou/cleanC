@@ -6,7 +6,7 @@ import (
 
 	"github.com/wailsapp/wails/v3/pkg/application"
 
-	"cleanC/services/system"
+	"cleanC/internal/service"
 )
 
 //go:embed all:frontend/dist
@@ -17,7 +17,7 @@ func main() {
 		Name:        "CleanC",
 		Description: "Windows 系统工具",
 		Services: []application.Service{
-			application.NewService(system.NewSystemService()),
+			application.NewService(service.NewSystemService()),
 		},
 		Assets: application.AssetOptions{
 			Handler: application.BundledAssetFileServer(assets),
